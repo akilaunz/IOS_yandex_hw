@@ -1,0 +1,32 @@
+
+func numberOfPrimesLessThan(_ number: Int) -> Int {
+    var mas: [Int] = [] //массив простых чисел до н
+    var flag: Bool = true
+    var upp_i: Int //чтобы в вычислениях хранить корень для проверки
+    
+    for i in 2..<number {
+        
+        for j in mas {
+            upp_i = Int(Double(i).squareRoot())
+            
+            if i % j == 0 { // если делится на предыдущие, значит уже составное
+                flag = false
+                break
+                
+            } else if upp_i < j { //достаточно просмотреть до корня числа, чтобы проверить на простоту
+                mas.append(i)
+                flag = false
+                break
+            }
+        }
+        
+        if flag {
+            mas.append(i)
+        } else {
+            flag = true
+        }
+    }
+    return mas.count
+}
+
+print(numberOfPrimesLessThan(100))
