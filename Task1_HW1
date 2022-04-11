@@ -1,0 +1,33 @@
+
+func collapse(_ str: String) -> String {
+
+    var new_str: String = ""
+    var ch: Character = "!" //стоп-символ (начальный)
+    var i = 0 //для счета вхождений буквы
+    
+    for c in str {
+        if ch != c {
+            if ch != "!" {
+                new_str += String(ch)
+                if i > 1 {
+                    new_str += String(i)
+                }
+                i = 0
+            }
+            ch = c
+        }
+        i += 1
+    }
+    
+    // еще один блок снизу, так как конец не досчитывается до конца
+    // либо можно в str добавить символ, чтобы цикл по конечным буквам также пробегался
+    
+    new_str += String(ch)
+    if i > 1 {
+        new_str += String(i)
+    }
+    
+    return new_str
+}
+
+print(collapse("AABBBCRFFA"))
