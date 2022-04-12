@@ -4,6 +4,10 @@ func numberOfPrimesLessThan(_ number: Int) -> Int {
     var flag: Bool = true
     var upp_i: Int //чтобы в вычислениях хранить корень для проверки
     
+    if number < 2 {
+            return 0
+    }
+    
     for i in 2..<number {
         
         for j in mas {
