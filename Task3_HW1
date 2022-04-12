@@ -5,13 +5,9 @@ let info = [
 ]
 
 func bestPlayers(from playersInfo: [String: [String?]]) -> [String] {
-    var players: [String] = []
-    
-    for pls in playersInfo.values {
-        players += pls.compactMap{$0}.filter{$0.count > 5}
-    }
-    
-    return players.sorted(by: <)
+    return playersInfo.values
+        .flatMap{$0}
+        .compactMap{$0}
+        .filter{$0.count > 5}
+        .sorted(by: <)
 }
-
-print(bestPlayers(from:info))
