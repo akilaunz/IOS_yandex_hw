@@ -7,9 +7,8 @@ let info = [
 func bestPlayers(from playersInfo: [String: [String?]]) -> [String] {
     var players: [String] = []
     
-    for (k, _) in playersInfo {
-        let info = playersInfo[k]?.compactMap{$0}
-        players += info!.filter{$0.count > 5}
+    for pls in playersInfo.values {
+        players += pls.compactMap{$0}.filter{$0.count > 5}
     }
     
     return players.sorted(by: <)
