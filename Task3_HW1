@@ -1,0 +1,18 @@
+let info = [
+    "Chelsea": ["Kante", "Lukaku", "Werner"],
+    "PSG": ["Messi", "Neymar", "Mbappe"],
+    "Manchester City": ["Grealish", nil, "Sterling"]
+]
+
+func bestPlayers(from playersInfo: [String: [String?]]) -> [String] {
+    var players: [String] = []
+    
+    for (k, _) in playersInfo {
+        let info = playersInfo[k]?.filter{ player in player != nil}
+        players += info!.map{$0!}
+    }
+    
+    return players.filter{pl in pl.count > 5}.sorted(by: <)
+}
+
+print(bestPlayers(from:info))
