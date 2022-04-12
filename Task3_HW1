@@ -8,11 +8,11 @@ func bestPlayers(from playersInfo: [String: [String?]]) -> [String] {
     var players: [String] = []
     
     for (k, _) in playersInfo {
-        let info = playersInfo[k]?.filter{ player in player != nil}
-        players += info!.map{$0!}
+        let info = playersInfo[k]?.compactMap{$0}
+        players += info!.filter{$0.count > 5}
     }
     
-    return players.filter{pl in pl.count > 5}.sorted(by: <)
+    return players.sorted(by: <)
 }
 
 print(bestPlayers(from:info))
