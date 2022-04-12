@@ -5,6 +5,10 @@ func collapse(_ str: String) -> String {
     var ch: Character = "!" //стоп-символ (начальный)
     var i = 0 //для счета вхождений буквы
     
+    if str.isEmpty {
+        return str
+    }
+    
     for c in str {
         if ch != c {
             if ch != "!" {
